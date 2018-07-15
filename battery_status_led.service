@@ -1,0 +1,7 @@
+[Unit]
+Description=Battery monitoring on CapsLock LED
+
+[Service]
+ExecStart="/usr/bin/battery_led.sh"
+Type=idle
+
