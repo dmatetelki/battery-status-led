@@ -4,11 +4,18 @@
 
 # This file is part of battery_status_led.
 
-# battery_status_led is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License v3 as published by the Free Software Foundation.
+# battery_status_led is free software: you can redistribute it and/or modify it 
+# under the terms of the GNU General Public License v3 as published by the Free 
+# Software Foundation.
 
-# battery_status_led is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License v3 for more details.
+# battery_status_led is distributed in the hope that it will be useful, but 
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License v3 for 
+# more details.
 
-# You should have received a copy of the GNU General Public License v3 along with battery_status_led. If not, see https://www.gnu.org/licenses/gpl-3.0.html.
+# You should have received a copy of the GNU General Public License v3 along 
+# with battery_status_led. If not, see 
+# https://www.gnu.org/licenses/gpl-3.0.html.
 
 # limits in percentages
 LOW=10 # flip LED every 2s
