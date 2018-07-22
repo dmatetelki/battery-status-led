@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}"
 DOCS="README.md"
 
 src_install() {
-	dodoc
+	dodoc ${DOCS}
 	dobin battery_status_led.sh
 	systemd_dounit battery_status_led.service
 }
