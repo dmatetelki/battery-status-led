@@ -24,7 +24,8 @@ CRIT=5 # flip led every 0.5s
 BAT_FULL=`cat /sys/class/power_supply/BAT0/energy_full_design`
 CAPSLOCK_LED=`cat /sys/class/leds/input4\:\:capslock/brightness`
 
-LED_DEV=/sys/class/leds/input4\:\:capslock/brightness
+# If not set by the systemd service file
+LED_DEV=${BATTERY_STATUS_LED_DEV:-/sys/class/leds/input4\:\:capslock/brightness}
 
 
 CNT=0
