@@ -14,3 +14,11 @@ systemctl enable battery_status_led
 
 The LED device can be changed by editing the systemd service file's line:
 Environment="BATTERY_STATUS_LED_DEV=/sys/class/leds/input4\:\:capslock"
+
+Manual install on gentoo:
+cd DIR
+git clone https://github.com/dmatetelki/battery_status_led
+cd /usr/local/portage/app-misc/
+ln -s DIR/battery_status_led/app-misc/battery_status_led  battery_status_led
+ebuild battery_status_led-0.1.ebuild digest
+emerge battery_status_led
