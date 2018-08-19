@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Copyright 2018 Denes Matetelki
+
+# This file is part of battery_status_led.
+
+# battery_status_led is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License v3 as published by the Free
+# Software Foundation.
+
+# battery_status_led is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License v3 for
+# more details.
+
+# You should have received a copy of the GNU General Public License v3 along
+# with battery_status_led. If not, see
+# https://www.gnu.org/licenses/gpl-3.0.html.
+
+VERSION="0.1-1"
+rm -rf build*
+mkdir build
+
+cat > build/battery_status_led.spec <<EOL
+Name:		battery_status_led
+Version:	0.1
+Release:	1%{?dist}
+Summary:	Battery status indication on an LED
+
+Group:          Utilities
+License:        GPLv3
+BuildArch:      noarch
+
+Source0:	battery_status_led.service
+Source1:	battery_status_led.sh
+Source2:	README.md
+
+
+%description
+Battery (low/critical) status indication by making a (the capslock) LED blink
+
+# %prep
+
+%install
+mkdir -p %{buildroot}%{_unitdir}
+install -p -m 0644 %{SOURCE0} %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}/%{_bindir}
+install -p -m 755 %{SOURCE1} %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/%{_docdir}/%{name}
+install -p -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.md
+
+# %clean
+
+%files
+%defattr(-,root,root,-)
+%{_unitdir}/battery_status_led.service
+%{_bindir}/battery_status_led.sh
+%{_docdir}/%{name}/README.md
+
+# %changelog
+EOL
+
+cp ../battery_status_led.service build/
+cp ../battery_status_led.sh build/
+cp ../README.md build/
+
+cd build
+rpmbuild --define "_sourcedir $PWD" --define "_rpmdir $PWD" --define "_unitdir /lib/systemd/system"  -bb battery_status_led.spec
+cd ..
+mv build/noarch/battery_status_led-${VERSION}.noarch.rpm .
+rm -rf build

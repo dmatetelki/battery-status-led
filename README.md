@@ -45,6 +45,15 @@ cd battery_status_led/debian
 sudo dpkg -i ./batterystatusled_0.1-1.deb
 ```
 
+## Creating RPM package and installing it:
+```
+cd DIR
+git clone https://github.com/dmatetelki/battery_status_led
+cd battery_status_led/redhat
+./package.rpm
+sudo rpm -i ./battery_status_led-0.1-1.noarch.rpm
+```
+
 ## Note:
 Did you know that the CapsLock key can be turned into another Ctrl?
 Add the following lines to `~/.Xmodmap` :
