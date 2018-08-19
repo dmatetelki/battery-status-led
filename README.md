@@ -1,7 +1,7 @@
 # Battery Status LED
 Battery (low/critical) status indication by making a (the capslock) LED blink
 
-## Prerequisites
+## Prerequisites:
 Make sure you have your laptop's ACPI module compiled into your kernel:
 ```
 Device Drivers > X86 Platform Specific Device Drivers
@@ -9,7 +9,7 @@ Device Drivers > X86 Platform Specific Device Drivers
 
 For example: Asus laptop extras, ThinkPad ACPI Laptop Extras, etc.
 
-## Usage
+## Usage:
 Execute the script as a root user:
 ```
 /usr/bin/battery_status_led.sh
@@ -36,7 +36,16 @@ ebuild battery_status_led-0.1.ebuild digest
 emerge battery_status_led
 ```
 
-## Note
+## Creating a debian package and installing it:
+```
+cd DIR
+git clone https://github.com/dmatetelki/battery_status_led
+cd battery_status_led/debian
+./package.deb
+sudo dpkg -i ./batterystatusled_0.1-1.deb
+```
+
+## Note:
 Did you know that the CapsLock key can be turned into another Ctrl?
 Add the following lines to `~/.Xmodmap` :
 ```
