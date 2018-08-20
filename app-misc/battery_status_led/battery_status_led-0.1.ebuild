@@ -3,9 +3,7 @@
 
 EAPI=6
 
-#inherit git-r3 systemd linux-info
-inherit git-r3 systemd
-
+inherit git-r3 systemd linux-info
 
 DESCRIPTION="Battery (low/critical) status indication by making a (the capslock) LED blink"
 HOMEPAGE="https://github.com/dmatetelki/battery_status_led"
@@ -20,11 +18,15 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-#CONFIG_CHECK="CONFIG_X86_PLATFORM_DEVICES"
+CONFIG_CHECK="CONFIG_X86_PLATFORM_DEVICES"
 
-#pkg_setup {
-#	linux-info_pkg_setup
-#}
+pkg_pretend() {
+	if use kernel_linux ; then
+		if [[ -e "${ROOT}"/usr/src/linux/.config ]] ; then
+			check_extra_config
+		fi
+	fi
+}
 
 DOCS="README.md"
 
