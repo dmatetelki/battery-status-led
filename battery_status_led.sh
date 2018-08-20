@@ -29,18 +29,20 @@ CAPSLOCK_LED_DEV=/sys/class/leds/input4\:\:capslock/brightness
 # If not set by the systemd service file
 LED_DEV=${BATTERY_STATUS_LED_DEV:-$CAPSLOCK_LED_DEV}
 
+BAT_FULL=$(cat $BAT_FULL_DEV)
+
 LED=0
 while :
 do
 	# If charging, sleep 1m, then restart the cycle
-	STATUS=cat $BAT_STATUS_DEV
+	STATUS=$(cat $BAT_STATUS_DEV)
 	if [ $STATUS == "Charging" ] ; then
 		echo 0 > $LED_DEV
 		sleep 1m
 		continue
 	fi
 
-	BAT_NOW=cat $BAT_NOW_DEV
+	BAT_NOW=$(cat $BAT_NOW_DEV)
 	BAT_PCT=$(($BAT_NOW * 100 / $BAT_FULL))
 
 	# If battery has more than >10% left, sleep 1m then restart the cycle
