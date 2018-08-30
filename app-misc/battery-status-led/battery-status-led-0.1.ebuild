@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-CONFIG_CHECK="CONFIG_X86_PLATFORM_DEVICES"
+CONFIG_CHECK="X86_PLATFORM_DEVICES"
 
 pkg_pretend() {
 	if use kernel_linux ; then
