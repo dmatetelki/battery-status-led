@@ -17,14 +17,14 @@
 # with battery_status_led. If not, see
 # https://www.gnu.org/licenses/gpl-3.0.html.
 
+NAME="battery-status-led"
 VERSION="0.1-1"
+
 rm -rf build*
+mkdir -p build/${NAME}_${VERSION}/DEBIAN
 
-mkdir -p build/batterystatusled_${VERSION}/DEBIAN
-# cp control build/batterystatusled_${VERSION}/DEBIAN/control
-
-cat > build/batterystatusled_${VERSION}/DEBIAN/control <<EOL
-Package: batterystatusled
+cat > build/${NAME}_${VERSION}/DEBIAN/control <<EOL
+Package: ${NAME}
 Version: ${VERSION}
 Section: base
 Priority: optional
@@ -34,19 +34,19 @@ Description: Battery Status LED
   Battery (low/critical) status indication by making a (the capslock) LED blink"
 EOL
 
-mkdir -p build/batterystatusled_${VERSION}/lib/systemd/system
-cp ../battery_status_led.service build/batterystatusled_${VERSION}/lib/systemd/system/
+mkdir -p build/${NAME}_${VERSION}/lib/systemd/system
+cp ../${NAME}.service build/${NAME}_${VERSION}/lib/systemd/system/
 
-mkdir -p build/batterystatusled_${VERSION}/usr/bin
-cp ../battery_status_led build/batterystatusled_${VERSION}/usr/bin/
+mkdir -p build/${NAME}_${VERSION}/usr/bin
+cp ../${NAME} build/${NAME}_${VERSION}/usr/bin/
 
-mkdir -p build/batterystatusled_${VERSION}/usr/share/doc/batterystatusled
-cp ../README.md build/batterystatusled_${VERSION}/usr/share/doc/batterystatusled/
+mkdir -p build/${NAME}_${VERSION}/usr/share/doc/${NAME}
+cp ../README.md build/${NAME}_${VERSION}/usr/share/doc/${NAME}/
 
 cd build
-dpkg-deb --root-owner-group --build batterystatusled_${VERSION}
+dpkg-deb --root-owner-group --build ${NAME}_${VERSION}
 
 cd ..
-mv build/batterystatusled_${VERSION}.deb .
+mv build/${NAME}_${VERSION}.deb .
 rm -rf build
 

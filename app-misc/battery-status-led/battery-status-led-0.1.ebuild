@@ -32,8 +32,8 @@ DOCS="README.md"
 
 src_install() {
 	dodoc ${DOCS}
-	dobin battery_status_led
-	systemd_dounit battery_status_led.service
+	dobin battery-status-led
+	systemd_dounit battery-status-led.service
 }
 
 pkg_postinst() {
