@@ -3,7 +3,7 @@ Description=Battery monitoring on CapsLock LED
 
 [Service]
 Environment="BATTERY_STATUS_LED_DEV=/sys/class/leds/input4\:\:capslock"
-ExecStart="/usr/bin/battery_status_led.sh"
+ExecStart="/usr/bin/battery-status-led.sh"
 Type=idle
 
 [Install]

@@ -6,9 +6,9 @@ EAPI=6
 inherit git-r3 systemd linux-info
 
 DESCRIPTION="Battery (low/critical) status indication by making a (the capslock) LED blink"
-HOMEPAGE="https://github.com/dmatetelki/battery_status_led"
+HOMEPAGE="https://github.com/dmatetelki/battery-status-led"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/dmatetelki/battery_status_led"
+EGIT_REPO_URI="https://github.com/dmatetelki/battery-status-led"
 
 LICENSE="GPL-3"
 SLOT="0"
