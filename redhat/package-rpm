@@ -32,7 +32,7 @@ License:        GPLv3
 BuildArch:      noarch
 
 Source0:	battery_status_led.service
-Source1:	battery_status_led.sh
+Source1:	battery_status_led
 Source2:	README.md
 
 
@@ -54,14 +54,14 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.md
 %files
 %defattr(-,root,root,-)
 %{_unitdir}/battery_status_led.service
-%{_bindir}/battery_status_led.sh
+%{_bindir}/battery_status_led
 %{_docdir}/%{name}/README.md
 
 # %changelog
 EOL
 
 cp ../battery_status_led.service build/
-cp ../battery_status_led.sh build/
+cp ../battery_status_led build/
 cp ../README.md build/
 
 cd build

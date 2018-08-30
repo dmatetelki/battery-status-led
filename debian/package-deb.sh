@@ -38,7 +38,7 @@ mkdir -p build/batterystatusled_${VERSION}/lib/systemd/system
 cp ../battery_status_led.service build/batterystatusled_${VERSION}/lib/systemd/system
 
 mkdir -p build/batterystatusled_${VERSION}/usr/bin
-cp ../battery_status_led.sh build/batterystatusled_${VERSION}/usr/bin
+cp ../battery_status_led build/batterystatusled_${VERSION}/usr/bin
 
 mkdir -p build/batterystatusled_${VERSION}/usr/share/doc/
 cp ../README.md build/batterystatusled_${VERSION}/usr/share/doc/
