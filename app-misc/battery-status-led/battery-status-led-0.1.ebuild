@@ -33,6 +33,7 @@ DOCS="README.md"
 src_install() {
 	dodoc ${DOCS}
 	dobin battery-status-led
+	doman *.1
 	systemd_dounit battery-status-led.service
 }
 

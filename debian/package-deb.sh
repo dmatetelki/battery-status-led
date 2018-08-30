@@ -26,7 +26,7 @@ mkdir -p build/${NAME}_${VERSION}/DEBIAN
 cat > build/${NAME}_${VERSION}/DEBIAN/control <<EOL
 Package: ${NAME}
 Version: ${VERSION}
-Section: base
+Section: misc
 Priority: optional
 Architecture: amd64
 Maintainer: Denes Matetelki <denes.matetelki@gmail.com>
@@ -42,6 +42,10 @@ cp ../${NAME} build/${NAME}_${VERSION}/usr/bin/
 
 mkdir -p build/${NAME}_${VERSION}/usr/share/doc/${NAME}
 cp ../README.md build/${NAME}_${VERSION}/usr/share/doc/${NAME}/
+
+mkdir -p build/${NAME}_${VERSION}/usr/share/man/man1
+cp ../${NAME}.1 build/${NAME}_${VERSION}/usr/share/man/man1/
+bzip2 build/${NAME}_${VERSION}/usr/share/man/man1/${NAME}.1
 
 cd build
 dpkg-deb --root-owner-group --build ${NAME}_${VERSION}

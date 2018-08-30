@@ -1,0 +1,33 @@
+.TH BATTERY-STATUS-LED 1 LOCAL
+
+.SH NAME
+
+Battery Status LED - Battery (low/critical) status indication by making a (the 
+capslock) LED blink
+
+.SH SYNOPSIS
+.B battery-status-led
+
+.SH DESCRIPTION
+Takes no argument. To pick another LED device, edit
+.I /lib/systemd/system/battery-status-led.service
+and modify
+.I BATTERY_STATUS_LED_DEV
+to something else. The default value is
+.I /sys/class/leds/input4\:\:capslock
+
+.SH AUTHOR
+Denes Matetelki <denes.matetelki@gmail.com>
+
+.SH SEE ALSO
+
+Homepage at: <https://github.com/dmatetelki/battery_status_led/>
+
+.br
+Copyright © 2018 Denes Matetelki.
+.br
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+.br
+There is NO WARRANTY, to the extent permitted by law.

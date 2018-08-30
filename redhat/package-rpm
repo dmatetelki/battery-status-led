@@ -37,7 +37,7 @@ BuildArch:      noarch
 Source0:	${NAME}.service
 Source1:	${NAME}
 Source2:	README.md
-
+Source3:	${NAME}.1
 
 %description
 Battery (low/critical) status indication by making a (the capslock) LED blink
@@ -51,6 +51,8 @@ mkdir -p %{buildroot}/%{_bindir}
 install -p -m 755 %{SOURCE1} %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_docdir}/${NAME}
 install -p -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/${NAME}/
+mkdir -p %{buildroot}/%{_mandir}/man1
+install -p -m 0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/
 
 # %clean
 
@@ -59,6 +61,7 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/${NAME}/
 %{_unitdir}/${NAME}.service
 %{_bindir}/${NAME}
 %{_docdir}/${NAME}/README.md
+%{_mandir}/man1/${NAME}.1.gz
 
 # %changelog
 EOL
@@ -66,6 +69,7 @@ EOL
 cp ../${NAME}.service build/
 cp ../${NAME} build/
 cp ../README.md build/
+cp ../${NAME}.1 build/
 
 cd build
 rpmbuild --define "_sourcedir $PWD" --define "_rpmdir $PWD" --define "_unitdir /lib/systemd/system"  -bb ${NAME}.spec
