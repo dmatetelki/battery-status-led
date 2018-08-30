@@ -44,8 +44,9 @@ mkdir -p build/batterystatusled_${VERSION}/usr/share/doc/
 cp ../README.md build/batterystatusled_${VERSION}/usr/share/doc/
 
 cd build
-dpkg-deb --build batterystatusled_${VERSION}
+dpkg-deb --root-owner-group --build batterystatusled_${VERSION}
 
 cd ..
 mv build/batterystatusled_${VERSION}.deb .
 rm -rf build
+
