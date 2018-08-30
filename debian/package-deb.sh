@@ -35,13 +35,13 @@ Description: Battery Status LED
 EOL
 
 mkdir -p build/batterystatusled_${VERSION}/lib/systemd/system
-cp ../battery_status_led.service build/batterystatusled_${VERSION}/lib/systemd/system
+cp ../battery_status_led.service build/batterystatusled_${VERSION}/lib/systemd/system/
 
 mkdir -p build/batterystatusled_${VERSION}/usr/bin
-cp ../battery_status_led build/batterystatusled_${VERSION}/usr/bin
+cp ../battery_status_led build/batterystatusled_${VERSION}/usr/bin/
 
-mkdir -p build/batterystatusled_${VERSION}/usr/share/doc/
-cp ../README.md build/batterystatusled_${VERSION}/usr/share/doc/
+mkdir -p build/batterystatusled_${VERSION}/usr/share/doc/batterystatusled
+cp ../README.md build/batterystatusled_${VERSION}/usr/share/doc/batterystatusled/
 
 cd build
 dpkg-deb --root-owner-group --build batterystatusled_${VERSION}
